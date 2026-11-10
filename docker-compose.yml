@@ -5,8 +5,10 @@ services:
     restart: unless-stopped
     entrypoint: ["sh", "/app/docker-entrypoint.sh"]
     env_file: .env
+    environment:
+      - PORT=3000
     ports:
-      - "${PORT:-3001}:3000"
+      - "${EXTERNAL_PORT:-3003}:3000"
     networks:
       - soluaux_proxy
 
